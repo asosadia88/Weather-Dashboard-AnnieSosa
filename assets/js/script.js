@@ -70,6 +70,9 @@ function displayWeather(cityName){
     .then(function(currentData){
         console.log(currentData)
         titleEl.innerHTML=currentData.name + dayjs.unix(currentData.dt).format(" (MM/DD/YYYY)")+ "<img src='https://openweathermap.org/img/wn/"+ currentData.weather[0].icon+"@2x.png'>"
+        tempEl.innerHTML = "Temp: " + currentData.main.temp;
+        windEl.innerHTML = "Wind: " + currentData.wind.speed + "MPH";
+        humidityEl.innerHTML = "Humidity: " + currentData.main.humidity + "%";
     })
 
 
@@ -88,14 +91,22 @@ function displayWeather(cityName){
              console.log(forecastArr[i])
                var cardTitle=document.getElementById("card-title"+j)
                console.log("card-title"+j)
-               cardTitle.textContent=dayjs.unix(forecastArr[i].dt).format(" (MM/DD/YYYY)")
+               cardTitle.textContent=dayjs.unix(forecastArr[i].dt).format(" (MM/DD/YYYY)");
+               var cardIcon = document.getElementById("icon" + j);
+                cardIcon.innerHTML = "<img src='https://openweathermap.org/img/wn/" + forecastArr[i].weather[0].icon + "@2x.png' alt='weather icon'></img>"
                var temp=document.getElementById("temp"+j)
-
-               temp.textContent=forecastArr[i].main.temp
+               temp.textContent="Temp:"+forecastArr[i].main.temp;
+               var wind=document.getElementById("wind"+j);
+               wind.textContent= "Wind: " + forecastArr[i].wind.speed;
+               var humid = document.getElementById("humidity" + j);
+               humid.textContent = "Humidity: " + forecastArr[i].main.humidity;
         }
 
     })
 }
+/*To  call weather-search at click of the button*/
 
+getCity();
+createCityBtn();
 
 searchBtn.addEventListener("click", searchCity)
