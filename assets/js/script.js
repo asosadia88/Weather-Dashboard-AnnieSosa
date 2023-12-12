@@ -1,18 +1,48 @@
-var apiKey="43307f36c133c1b4d80feb3644b2ab3e"
-var titleEl=document.getElementById("title")
+var apiKey="ffe5ad5271334f04eed5498a02a4c9816"
+var titleEl=document.getElementById("SearchResult");
 var tempEl=document.getElementById("temp")
 var windEl=document.getElementById("wind")
 var humidityEl=document.getElementById("humidity")
 var searchBtn=document.getElementById("search-btn")
+var searchHistoryEl=document.getElementById("search-history");
 var cityInput=document.getElementById("city-input")
-var fivedayForcastEl= document.getElementById("fiveday-forcast")
+var forecastCardsEl = document.getElementById("forecast-cards");
+var cityArr= [];
 
 
-function searchCity(){
-    var cityName=cityInput.value
+function weatherSearch (){
+    if (!cityArr.toLowerCase().includes(cityInput.value.toLowerCase())){
+        cityArr.push(cityInput.value);
+            localStorage.setItem('city' , JSON.stringify(cityArr));
+   
+displayWeather(cityInput.value);
+createCityBtn();
+cityInput.value = '';
+    }
 
-    displayWeather(cityName)
 }
+ function getCity(){
+    var gottenCity=localStorage.getItem('city');
+    if (gottenCity) {
+        cityArr=JSON.parse(localStorage.getItem('city'));
+        return;
+ }
+
+ }
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
 
 function displayWeather(cityName){
     var url="https://api.openweathermap.org/data/2.5/weather?q="+cityName+"&appid="+ apiKey+"&units=imperial"
