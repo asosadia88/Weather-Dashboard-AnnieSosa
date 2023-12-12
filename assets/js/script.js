@@ -30,6 +30,23 @@ cityInput.value = '';
 
  }
 
+function createCityBtn(){
+    console.log(cityArr);
+    searchHistoryEl.textContent = "";
+    for (let i = 0; i < cityArr.length; i++) {
+        var li = document.createElement('li');
+        var cityBtn = document.createElement('button');
+        cityBtn.innerHTML = cityArr[i];
+        cityBtn.classList.add("btn", "btn-secondary", "w-100");
+        li.classList.add("list-group-item", "border-0");
+        li.appendChild(cityBtn);
+        searchHistoryEl.appendChild(li);
+        cityBtn.addEventListener('click', function (event) {
+            displayWeather(event.target.textContent);
+        })
+    }
+
+    }
 
 
 
@@ -39,7 +56,6 @@ cityInput.value = '';
 
 
 
- 
 
 
 
