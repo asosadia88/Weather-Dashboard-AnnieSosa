@@ -12,7 +12,9 @@ N/A
 
 Explore the enhanced features of the Weather Dashboard by following this hyperlink: 
 
-[Weather Dashboard](#insert_actual_link_here)
+[Weather Dashboard](#https://asosadia88.github.io/Weather-Dashboard-AnnieSosa/)
+
+https://asosadia88.github.io/Weather-Dashboard-AnnieSosa/
 
 Upon visiting the page, you will be greeted with a comprehensive weather overview, as depicted in the following image:
 <img src="./assets/images/WeatherApp Screenshot.png" alt="weather app screenshot">
